@@ -11,6 +11,7 @@
 const ESLintPlugin = require('eslint-webpack-plugin')
 
 const { configure } = require('quasar/wrappers')
+const navigationGuards = require('boot/navigation-guards')
 
 module.exports = configure(function (ctx) {
   return {
@@ -24,6 +25,7 @@ module.exports = configure(function (ctx) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-webpack/boot-files
     boot: [
+      'navigationGuards',
       'axios'
     ],
 

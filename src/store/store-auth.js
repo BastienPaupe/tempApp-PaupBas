@@ -67,7 +67,11 @@ const actions = {
     api.post('/login', payload)
       .then(function (response) {
         Loading.hide()
-        dispatch('setUser', response.data)
+        commit('SET_USER', response.data.user)
+        commit('SET_TOKEN', response.data.access_token)
+
+        // Redirige l'utilisateur vers la page d'accueil
+        this.$router.push('/sensors')
       })
       .catch(function (error) {
         Loading.hide()
@@ -76,32 +80,19 @@ const actions = {
       })
   },
   /**
-   * Définir dans le store les données de l'utilisateur
-   * @param commit
-   * @param dispatch
-   * @param data
-   */
-  setUser ({ commit, dispatch }, data) {
-    // Sauvegarde les données de l'utilisateur et le token dans le magasin
-    commit('SET_USER', data.user)
-    commit('SET_TOKEN', data.access_token)
-    // dispatch('sensor/getAllSensors')
-
-    // Redirige l'utilisateur vers la page d'accueil
-    this.$router.push('/')
-  },
-  /**
    * Déconnecte l'utilisateur de l'api et surprime les données
    * @param commit
    * @param state
    */
   disconnectUser ({ commit, state }) {
     Loading.show()
-    const that = this
-
+    const config = {
+      headers: { Authorization: 'Bearer ' + state.auth.token }
+    }
     // Déconnexion de l'API
-    api.post('/logout')
+    api.post('/logout', config)
       .catch(function (error) {
+        Loading.hide()
         showErrorMessage('Erreur lors de la déconnexion', error)
         throw error
       })
@@ -111,7 +102,7 @@ const actions = {
         commit('setToken', null)
 
         // Redirige l'utilisateur vers la page de connexion
-        that.$router.push('/')
+        this.$router.push('/login')
         // location.reload() // recharge la page du navigateur
         Loading.hide()
       })

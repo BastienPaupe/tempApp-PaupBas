@@ -1,17 +1,20 @@
 <template>
   <q-page>
-    <h1>Capteurs</h1>
+    <div class="row q-gutter-lg">
+
+      <div v-if="sensors === null">La liste de capteur est vide</div>
 
     <card-sensor
       v-for="sensor  in sensors"
       :key="sensor.id"
       :sensor="sensor"
     />
-<!--    <q-table
-      title="Capteur"
-      :columns="this.columns"
-      :rows="sensors"
-    />-->
+<!--    <q-table-->
+<!--      title="Capteur"-->
+<!--      :columns="columns"-->
+<!--      :rows="sensors"-->
+<!--    />-->
+    </div>
   </q-page>
 </template>
 

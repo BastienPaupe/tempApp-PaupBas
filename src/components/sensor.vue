@@ -1,51 +1,53 @@
 <template>
 <q-card class="card">
   <q-card-section>
+    <q-img
+      src="https://placehold.jp/80x80.png"
+      width="40%"
+      class="absolute-right"
+    />
     <div class="text-h5">{{sensor.nom}}</div>
     <div> N° {{sensor.code}}</div>
-    <q-img
-      :src="'./assets/sensor.png'"
-    />
+    <div class="text-h5">Salle {{sensor.salle.nom}}</div>
   </q-card-section>
-  <q-card-section>
-    <div class="text-h6">Salle : {{sensor.salle.nom}}</div>
-  </q-card-section>
-  <q-separator dark insert />
-  <q-rating
-    :icon="favorite"
-    size="2em"
-    :max="1"
-    color="primary"
+
+  <div v-if="sensor.mesures === null">Aucune mesures</div>
+  <q-table
+    v-else
+    title="Mesures"
+    :rows="sensor.mesures"
+    :columns="columns"
+    hide-bottom
   />
-
-  <q-card-actions
-    class="absolute-bottom"
-    align="right">
-    <q-btn
-      icon="edit"
-      color="blue"
-      flat>Modifier</q-btn>
-    <q-btn
-      icon="like"
-      color="yellow"
-      flat>Favoris</q-btn>
-  </q-card-actions>
-
 </q-card>
 </template>
 
 <script>
+
+const columns = [
+  { name: 'Date', label: 'Date et heures', field: 'date', align: 'left', sortable: true },
+  { name: 'sequence', align: 'center', label: 'Séquence', field: 'sequence', sortable: true },
+  { name: 'temperature', label: 'Température (°)', field: 'temperature', sortable: true },
+  { name: 'humidite', label: 'Humidité (%)', field: 'humidite' }
+]
+
 export default {
   name: 'sensor',
-  props: ['sensor']
+  props: ['sensor'],
+  data () {
+    return {
+      columns
+    }
+  }
 }
 </script>
 
 <style scoped>
 .card {
-  min-height: 100px;
-  max-width: 200px;
-  width: 200px;
+  min-height: 15%;
+  max-width: 50%;
   transition: background 0.3s;
+  padding: 15px;
+  margin: 20px;
 }
 </style>

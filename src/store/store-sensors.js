@@ -4,44 +4,80 @@ import { Loading } from 'quasar'
 
 // State : données du magasin
 const state = {
-  sensors: [
-    {
-      id: 1,
-      nom: 'capteur-5574',
-      logo: 'null',
-      code: 'nd_6430',
-      salle: {
-        id: 1,
-        nom: 'C595-119'
-      },
-      mesures: [
-        {
-          id: 177,
-          date: '2021-02-23',
-          sequence: 7606,
-          temperature: 29.66,
-          humidite: 95.67,
-          capteur_id: 1
-        },
-        {
-          id: 137,
-          date: '2017-12-16',
-          sequence: 5094,
-          temperature: 8.17,
-          humidite: 3.62,
-          capteur_id: 1
-        },
-        {
-          id: 179,
-          date: '2016-05-09',
-          sequence: 7205,
-          temperature: -6.76,
-          humidite: 52.89,
-          capteur_id: 1
-        }
-      ]
-    }
-  ]
+  // sensors: [
+  //   {
+  //     id: 1,
+  //     nom: 'capteur-5574',
+  //     logo: 'null',
+  //     code: 'nd_6430',
+  //     salle: {
+  //       id: 1,
+  //       nom: 'C595-119'
+  //     },
+  //     mesures: [
+  //       {
+  //         id: 177,
+  //         date: '2021-02-23',
+  //         sequence: 7606,
+  //         temperature: 29.66,
+  //         humidite: 95.67,
+  //         capteur_id: 1
+  //       },
+  //       {
+  //         id: 137,
+  //         date: '2017-12-16',
+  //         sequence: 5094,
+  //         temperature: 8.17,
+  //         humidite: 3.62,
+  //         capteur_id: 1
+  //       },
+  //       {
+  //         id: 179,
+  //         date: '2016-05-09',
+  //         sequence: 7205,
+  //         temperature: -6.76,
+  //         humidite: 52.89,
+  //         capteur_id: 1
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     id: 1,
+  //     nom: 'capteur-5574',
+  //     logo: 'null',
+  //     code: 'nd_6430',
+  //     salle: {
+  //       id: 1,
+  //       nom: 'C595-119'
+  //     },
+  //     mesures: [
+  //       {
+  //         id: 177,
+  //         date: '2021-02-23',
+  //         sequence: 7606,
+  //         temperature: 29.66,
+  //         humidite: 95.67,
+  //         capteur_id: 1
+  //       },
+  //       {
+  //         id: 137,
+  //         date: '2017-12-16',
+  //         sequence: 5094,
+  //         temperature: 8.17,
+  //         humidite: 3.62,
+  //         capteur_id: 1
+  //       },
+  //       {
+  //         id: 179,
+  //         date: '2016-05-09',
+  //         sequence: 7205,
+  //         temperature: -6.76,
+  //         humidite: 52.89,
+  //         capteur_id: 1
+  //       }
+  //     ]
+  //   }
+  // ]
 }
 
 /*
